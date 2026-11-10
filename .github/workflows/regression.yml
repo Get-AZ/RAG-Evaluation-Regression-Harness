@@ -1,0 +1,26 @@
+name: RAG regression checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evaluation-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Evaluator and answer-review tests
+        run: python -m unittest discover -s tests -v
+      - name: Retrieval, fusion, filtering and CI tests
+        run: python -m unittest test_retrieval_experiment test_semantic_experiment test_frozen_pipeline test_ci_gate -v
+      - name: Enforce synthetic retrieval regression gate
+        run: python run_ci_gate.py

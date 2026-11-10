@@ -1,0 +1,53 @@
+{
+  "evaluation_scope": "One development PDF and one project-held-out PDF; small correlated manually reviewed datasets, not general accuracy.",
+  "author": "Getamesay Zegeye",
+  "evaluations": [
+    {
+      "split": "development",
+      "answerable_cases": 9,
+      "missing_information_cases": 1,
+      "dataset_sha256": "4b130770a3f15c9bf5fa12e1a83663d99a6d4ab44c6dd82a2016e746fa27dd6b",
+      "retrieval_metrics": {
+        "recall": 0.9444444444444444,
+        "mrr": 0.8888888888888888,
+        "ndcg": 0.8908647289784444
+      },
+      "human_review_criteria_means": {
+        "grounded": 1.0,
+        "complete": 0.9,
+        "behavior_correct": 1.0,
+        "citations_correct": 1.0
+      },
+      "answers_reviewed": 10,
+      "all_criteria_pass_rate": 0.9,
+      "incomplete_case_ids": [
+        "TR-DEV-008"
+      ]
+    },
+    {
+      "split": "heldout",
+      "answerable_cases": 9,
+      "missing_information_cases": 3,
+      "dataset_sha256": "8b7a92184cd16dbdd696be97e6eda892b7e18ef1e8ed7accabe4ad0ce7d94589",
+      "retrieval_metrics": {
+        "recall": 0.8333333333333334,
+        "mrr": 0.8148148148148148,
+        "ndcg": 0.7797536178673332
+      },
+      "human_review_criteria_means": {
+        "grounded": 1.0,
+        "complete": 0.8333333333333334,
+        "behavior_correct": 1.0,
+        "citations_correct": 1.0
+      },
+      "answers_reviewed": 12,
+      "all_criteria_pass_rate": 0.8333333333333334,
+      "incomplete_case_ids": [
+        "AG-HOLD-007",
+        "AG-HOLD-009"
+      ]
+    }
+  ],
+  "hosted_ci_status": "pending first GitHub run",
+  "heldout_tuning": "No retrieval settings or prompt changed after first held-out results."
+}

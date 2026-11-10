@@ -1,0 +1,20 @@
+[
+  {
+    "id": "demo-handbook-p1",
+    "document_id": "demo-handbook",
+    "page": 1,
+    "text": "Library opening hours are Monday through Friday, 09:00 to 17:00."
+  },
+  {
+    "id": "demo-handbook-p2",
+    "document_id": "demo-handbook",
+    "page": 2,
+    "text": "Equipment loans require a student card. Equipment loans last seven days."
+  },
+  {
+    "id": "demo-policy-p1",
+    "document_id": "demo-policy",
+    "page": 1,
+    "text": "Expense receipts must be submitted within thirty days."
+  }
+]

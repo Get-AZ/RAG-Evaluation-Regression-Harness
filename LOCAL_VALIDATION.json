@@ -1,0 +1,89 @@
+{
+  "checks": [
+    {
+      "command": [
+        "python",
+        "verify_transformer_data.py"
+      ],
+      "exit_code": 0,
+      "stdout": "VERIFIED: PDF hash matches the human-reviewed source.\nVERIFIED: 484 text passages across 15 PDF pages.\nVERIFIED: 10 approved development cases: 9 answerable, 1 missing-information.\nVERIFIED: data files and baseline fingerprints match.\nThis is a frozen lexical/block baseline, not a FAISS app result or a held-out test."
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "harness.evaluate",
+        "run",
+        "--corpus",
+        "private_data/transformer/corpus.json",
+        "--cases",
+        "private_data/transformer/cases.json",
+        "--split",
+        "dev",
+        "--k",
+        "3",
+        "--out",
+        "reports/candidate.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"recall\": 0.3333333333333333, \"mrr\": 0.3333333333333333, \"ndcg\": 0.3333333333333333}"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "harness.evaluate",
+        "compare",
+        "--baseline",
+        "private_data/transformer/lexical_baseline_k3.json",
+        "--candidate",
+        "reports/candidate.json"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: no gated regression"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "harness.evaluate",
+        "run",
+        "--corpus",
+        "private_data/transformer/corpus.json",
+        "--cases",
+        "private_data/transformer/cases.json",
+        "--split",
+        "dev",
+        "--k",
+        "3",
+        "--mode",
+        "empty",
+        "--out",
+        "reports/broken.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"recall\": 0.0, \"mrr\": 0.0, \"ndcg\": 0.0}"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "harness.evaluate",
+        "compare",
+        "--baseline",
+        "private_data/transformer/lexical_baseline_k3.json",
+        "--candidate",
+        "reports/broken.json"
+      ],
+      "exit_code": 1,
+      "stdout": "REGRESSION: recall: 0.3333 -> 0.0000; mrr: 0.3333 -> 0.0000; ndcg: 0.3333 -> 0.0000"
+    },
+    {
+      "check": "wrong source PDF rejected",
+      "exit_code": 2
+    }
+  ],
+  "existing_harness_tests_passed": 16,
+  "live_llm_calls": 0,
+  "hosted_ci_run": false
+}

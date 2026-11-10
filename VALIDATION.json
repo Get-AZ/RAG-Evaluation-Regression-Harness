@@ -1,0 +1,70 @@
+{
+  "unit_tests_passed": 16,
+  "scope": "Local synthetic fixtures only; app adapter, real benchmark and hosted CI pending",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.evaluate",
+        "run",
+        "--demo",
+        "--corpus",
+        "data/demo/corpus.json",
+        "--cases",
+        "data/demo/cases.json",
+        "--out",
+        "reports/candidate.json"
+      ],
+      "observed_exit": 0,
+      "stdout": "DEMO ONLY {\"recall\": 1.0, \"mrr\": 1.0, \"ndcg\": 1.0}"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.evaluate",
+        "compare",
+        "--baseline",
+        "data/demo/baseline.json",
+        "--candidate",
+        "reports/candidate.json"
+      ],
+      "observed_exit": 0,
+      "stdout": "PASS: no gated regression"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.evaluate",
+        "run",
+        "--demo",
+        "--mode",
+        "empty",
+        "--corpus",
+        "data/demo/corpus.json",
+        "--cases",
+        "data/demo/cases.json",
+        "--out",
+        "reports/broken.json"
+      ],
+      "observed_exit": 0,
+      "stdout": "DEMO ONLY {\"recall\": 0.0, \"mrr\": 0.0, \"ndcg\": 0.0}"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "harness.evaluate",
+        "compare",
+        "--baseline",
+        "data/demo/baseline.json",
+        "--candidate",
+        "reports/broken.json"
+      ],
+      "observed_exit": 1,
+      "stdout": "REGRESSION: recall: 1.0000 -> 0.0000; mrr: 1.0000 -> 0.0000; ndcg: 1.0000 -> 0.0000"
+    }
+  ]
+}

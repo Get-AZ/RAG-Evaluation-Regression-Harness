@@ -1,0 +1,7 @@
+# Preserve byte-level fingerprints of the original experiment scripts and data.
+*.py -text
+*.json -text
+*.csv -text
+*.txt -text
+*.md text eol=lf
+*.yml text eol=lf

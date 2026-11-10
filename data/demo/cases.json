@@ -1,0 +1,64 @@
+[
+  {
+    "id": "demo-dev-1",
+    "question": "What are the library opening hours?",
+    "relevant_ids": [
+      "demo-handbook-p1"
+    ],
+    "answerable": true,
+    "document_ids": [
+      "demo-handbook"
+    ],
+    "split": "dev",
+    "category": "direct",
+    "review_status": "synthetic_fixture_not_human_reviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "id": "demo-dev-2",
+    "question": "What card is required for equipment loans and how long are loans?",
+    "relevant_ids": [
+      "demo-handbook-p2"
+    ],
+    "answerable": true,
+    "document_ids": [
+      "demo-handbook"
+    ],
+    "split": "dev",
+    "category": "direct",
+    "review_status": "synthetic_fixture_not_human_reviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "id": "demo-dev-3",
+    "question": "What is the annual cafeteria electricity bill?",
+    "relevant_ids": [],
+    "answerable": false,
+    "document_ids": [
+      "demo-handbook"
+    ],
+    "split": "dev",
+    "category": "missing_information",
+    "review_status": "synthetic_fixture_not_human_reviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "id": "demo-heldout-1",
+    "question": "Within how many days must expense receipts be submitted?",
+    "relevant_ids": [
+      "demo-policy-p1"
+    ],
+    "answerable": true,
+    "document_ids": [
+      "demo-policy"
+    ],
+    "split": "heldout",
+    "category": "direct",
+    "review_status": "synthetic_fixture_not_human_reviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  }
+]

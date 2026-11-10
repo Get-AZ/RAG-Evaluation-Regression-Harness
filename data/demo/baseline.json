@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "demo": true,
+  "split": "dev",
+  "k": 3,
+  "dataset_sha256": "a24afe9275a5ecd004dcc3165c5fd00001297fdd482bcbdad18b0987531ca132",
+  "configuration": "lexical",
+  "scored_cases": 2,
+  "unanswerable_cases": 1,
+  "metrics": {
+    "recall": 1.0,
+    "mrr": 1.0,
+    "ndcg": 1.0
+  },
+  "by_category": {
+    "direct": {
+      "recall": 1.0,
+      "mrr": 1.0,
+      "ndcg": 1.0
+    },
+    "missing_information": {
+      "recall": null,
+      "mrr": null,
+      "ndcg": null
+    }
+  },
+  "cases": [
+    {
+      "id": "demo-dev-1",
+      "category": "direct",
+      "ranked_ids": [
+        "demo-handbook-p1"
+      ],
+      "answerable": true,
+      "metrics": {
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0
+      }
+    },
+    {
+      "id": "demo-dev-2",
+      "category": "direct",
+      "ranked_ids": [
+        "demo-handbook-p2",
+        "demo-handbook-p1"
+      ],
+      "answerable": true,
+      "metrics": {
+        "recall": 1.0,
+        "mrr": 1.0,
+        "ndcg": 1.0
+      }
+    },
+    {
+      "id": "demo-dev-3",
+      "category": "missing_information",
+      "ranked_ids": [],
+      "answerable": false,
+      "metrics": null
+    }
+  ],
+  "answer_quality": "pending separate human review"
+}

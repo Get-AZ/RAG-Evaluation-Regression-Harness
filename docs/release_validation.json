@@ -1,0 +1,13 @@
+{
+  "local_validation_date": "2026-11-10",
+  "local_python": "3.12.14",
+  "tests_passed": 44,
+  "healthy_synthetic_gate_exit_code": 0,
+  "empty_synthetic_gate_exit_code": 1,
+  "original_experiment_sources": "byte-for-byte preserved from supplied archive",
+  "ignore_rules": "tested using temporary Git staging",
+  "real_reports": "retrieval metrics and human-review scores recomputed from original records and matched",
+  "hosted_github_workflow": "not yet run",
+  "live_model_reexecution_during_packaging": false,
+  "api_requests_during_packaging": 0
+}
