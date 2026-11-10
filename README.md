@@ -23,7 +23,7 @@ The machine-readable public summary is [docs/evaluation_summary.json](docs/evalu
 
 ## Run the offline public checks
 
-Python 3.14 is used by the proposed GitHub workflow. The evaluator, synthetic demo and helper tests use the Python standard library; no pip installation, model download, GPU or API key is needed for these checks.
+Python 3.14 is used by the verified GitHub Actions workflow. The evaluator, synthetic demo and helper tests use the Python standard library; no pip installation, model download, GPU or API key is needed for these checks.
 
 From the repository root:
 
@@ -37,7 +37,13 @@ The gate prints `DEMO ONLY` and `PASS: no gated regression`, returning exit code
 
 ## Demonstrate rejection
 
-On a separate branch, change `config/ci_retriever.json` from `"lexical"` to `"empty"`. The same gate then returns 1 and reports declines from 1.0 to 0.0. In GitHub Actions, the enforcement step should fail. Follow [docs/CI_DEMONSTRATION.md](docs/CI_DEMONSTRATION.md) and retain links to an actual passing workflow and a failing pull request. Hosted execution is pending until those runs are observed; this repository does not claim branch protection is already enabled.
+
+Verified on GitHub Actions on November 10, 2026: the deliberately empty retriever passed all 44 unit tests, but the separate regression enforcement step rejected it. Recall, MRR and nDCG dropped from 1.0 to 0.0, producing exit code 1.
+
+- [Regression rejection run](https://github.com/Get-AZ/RAG-Evaluation-Regression-Harness/actions/runs/42898641769)
+- [Pull request #1](https://github.com/Get-AZ/RAG-Evaluation-Regression-Harness/pull/1): the required evaluation-gate check blocked merging. The demonstration PR was closed without merging.
+
+The demonstration branch remains separate from main. These checks enforce a synthetic retrieval baseline; they do not rerun the full real-model evaluation.
 
 The unit test that expects a bad candidate to fail should itself pass. The separate workflow enforcement step rejects the configured bad candidate. This distinction prevents a green negative-control test from being mistaken for a demonstrated red pull request.
 
@@ -79,6 +85,8 @@ The real-model scripts are intentionally left unchanged to preserve recorded fin
 
 Completed: human-reviewed development and held-out datasets; controlled retrieval experiments; exact development replay on the author's machine; generated-answer reviews; local negative-control regression rejection.
 
-Remaining release evidence: an observed GitHub Actions passing run, an observed deliberately bad pull request rejected by the gate, and optional branch-protection configuration. CI supplied here protects synthetic evaluator behavior; it does not establish that the full real-model pipeline is evaluated on every commit.
+GitHub Actions verification is complete: the healthy main-branch workflow passed, and a deliberately broken retriever was rejected by the required regression gate. Branch protection blocked the demonstration pull request, which was closed without merging.
+
+CI protects synthetic evaluator behavior; it does not evaluate the full real-model pipeline on every commit.
 
 Future work includes evaluating more documents/domains, more diverse abstention cases, explicit alternative-evidence judgments, context-budget analysis and service-level latency/cost measurements. Tuning after inspecting this held-out set requires a new untouched test set.
